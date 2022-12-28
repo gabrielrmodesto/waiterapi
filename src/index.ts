@@ -16,6 +16,3 @@ mongoose.connect('mongodb+srv://gabrielrmodesto5:pLt3fDJzKJ5DUUU@orderappjs.uy6l
     });
   })
   .catch(() => console.log('erro conexao'));
-
-
-
