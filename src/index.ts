@@ -2,10 +2,16 @@ import path from 'node:path';
 import express from 'express';
 import mongoose from 'mongoose';
 import { router } from './router';
+import http from 'node:http';
+import { Server } from 'socket.io';
+
+const app = express();
+const server = http.createServer(app);
+export const io = new Server(server);
 
 mongoose.connect('mongodb+srv://gabrielrmodesto5:pLt3fDJzKJ5DUUU@orderappjs.uy6lgcf.mongodb.net/?retryWrites=true&w=majority')
   .then(() => {
-    const app = express();
+    const port = 3001;
 
     app.use((req, res, next) => {
       res.setHeader('Access-Control-Allow-Origin', '*');
@@ -19,8 +25,8 @@ mongoose.connect('mongodb+srv://gabrielrmodesto5:pLt3fDJzKJ5DUUU@orderappjs.uy6l
     app.use(express.json());
     app.use(router);
 
-    app.listen(3001, () => {
-      console.log('conectado');
+    server.listen(port, () => {
+      console.log('Servidor conectado na porta localhost');
     });
   })
   .catch(() => console.log('erro conexao'));
