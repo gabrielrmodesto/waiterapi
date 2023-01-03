@@ -9,7 +9,7 @@ const app = express();
 const server = http.createServer(app);
 export const io = new Server(server);
 
-mongoose.connect('mongodb+srv://gabrielrmodesto5:pLt3fDJzKJ5DUUU@orderappjs.uy6lgcf.mongodb.net/?retryWrites=true&w=majority')
+mongoose.connect('')
   .then(() => {
     const port = 3001;
 
